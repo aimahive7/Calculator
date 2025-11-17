@@ -131,7 +131,17 @@ function calculateSquareRoot() {
 
 function calculatePercentage() {
     const num = parseFloat(currentInput);
-    currentInput = (num / 100).toString();
+    let result;
+    // If there's a previous value and an operator, percentage should be relative to previousInput
+    if (operator !== null && previousInput !== '') {
+        const prev = parseFloat(previousInput);
+        result = (prev * num) / 100;
+    } else {
+        result = num / 100;
+    }
+    // Round to avoid floating point artifacts
+    result = Math.round(result * 10000000) / 10000000;
+    currentInput = result.toString();
     shouldResetDisplay = true;
     updateDisplay();
 }
