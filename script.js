@@ -146,6 +146,18 @@ function calculatePercentage() {
     updateDisplay();
 }
 
+
+// Toggle between positive and negative
+function toggleSign() {
+    if (currentInput !== '0' && currentInput !== '') {
+        if (currentInput.startsWith('-')) {
+            currentInput = currentInput.substring(1);
+        } else {
+            currentInput = '-' + currentInput;
+        }
+        updateDisplay();
+    }
+}
 // Initialize display
 updateDisplay();
 
